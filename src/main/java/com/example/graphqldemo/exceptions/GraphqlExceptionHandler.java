@@ -5,6 +5,7 @@ import graphql.kickstart.spring.error.ThrowableGraphQLError;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+//see also GraphQLErrorHandler (interface to be implemented) with exception-handlers-enable
 @Component
 public class GraphqlExceptionHandler {
 
@@ -14,7 +15,7 @@ public class GraphqlExceptionHandler {
     }
 
 
-    //hide runtime exceptions messages like their stack traces
+    //hide runtime exceptions messages like stack trace
     @ExceptionHandler(RuntimeException.class)
     public ThrowableGraphQLError handle(RuntimeException e) {
         return new ThrowableGraphQLError(e, "Internal server error");
