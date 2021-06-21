@@ -1,6 +1,9 @@
 #get a bank account
-query GET_BANK_ACCOUNT ($id: ID) {
-    bankAccount(id: $id) {
+query GET_BANK_ACCOUNT ($ID: ID!) {
+    bankAccount(id: $ID) {
+        id
+        name
+        currency
         client {
             id
             firstName

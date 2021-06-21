@@ -1,0 +1,8 @@
+#create a bank account
+mutation CREATE_ACCOUNT ($NAME: String!) {
+    createBankAccount(input: {name: $NAME}) {
+        id
+        name
+        currency
+    }
+}

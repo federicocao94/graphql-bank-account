@@ -7,6 +7,9 @@ graphql:
     headers:
       Authorization: Bearer TOKEN
     tabs:
-      - name: Bank account sample query
+      - name: Account sample query
         query: classpath:playground/bank_account.graphql
         variables: classpath:playground/bank_account_variables.json
+      - name: Account sample mutation
+        query: classpath:playground/create_account.graphql
+        variables: classpath:playground/create_account_var.json
