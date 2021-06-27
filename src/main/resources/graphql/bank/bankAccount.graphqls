@@ -4,4 +4,6 @@ type BankAccount {
     name: String!
     client: Client
     currency: Currency!
+    createdOn: Date
+    createdAt: DateTime
 }

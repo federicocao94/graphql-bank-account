@@ -1,8 +1,10 @@
 #create a bank account
-mutation CREATE_ACCOUNT ($NAME: String!) {
-    createBankAccount(input: {name: $NAME}) {
+mutation CREATE_ACCOUNT ($NAME: String!, $AGE: NonNegativeInt!) {
+    createBankAccount(input: {name: $NAME, age: $AGE}) {
         id
         name
         currency
+        createdOn
+        createdAt
     }
 }

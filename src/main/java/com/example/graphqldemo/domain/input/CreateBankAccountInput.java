@@ -7,4 +7,6 @@ public class CreateBankAccountInput {
 
     String name;
 
+    int age;
+
 }
