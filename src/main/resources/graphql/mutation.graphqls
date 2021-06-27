@@ -1,4 +1,7 @@
 
 type Mutation {
+    #create account
     createBankAccount(input: CreateBankAccountInput): BankAccount!
+    #upload file
+    uploadFile: ID!
 }
