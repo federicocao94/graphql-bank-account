@@ -11,3 +11,24 @@ query GET_BANK_ACCOUNT ($ID: ID!) {
         }
     }
 }
+
+#get 2 bank accounts after the first 2
+#after params contains the cursor id (base 64 encoding of the second bank account's UUID)
+query GET_BANK_ACCOUNTS {
+    bankAccounts(first: 2, after: "ZjgzNWQxYTMtMDEyYS00MjI0LTg2MjEtMzQ2YmMzOGYxZDUx") {
+        edges {
+            cursor
+            node {
+                id
+                name
+                createdAt
+            }
+        }
+        pageInfo {
+            hasPreviousPage
+            hasNextPage
+            startCursor
+            endCursor
+        }
+    }
+}
