@@ -1,11 +1,13 @@
 package com.example.graphqldemo.resolver.bank.query;
 
 import com.example.graphqldemo.connection.CursorUtil;
+import com.example.graphqldemo.context.CustomGraphQLContext;
 import com.example.graphqldemo.domain.BankAccount;
 import com.example.graphqldemo.domain.Currency;
 import com.example.graphqldemo.repository.BankAccountRepository;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import graphql.relay.*;
+import graphql.schema.DataFetchingEnvironment;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.lang.Nullable;
@@ -25,8 +27,11 @@ public class BankAccountResolver implements GraphQLQueryResolver {
     private final CursorUtil cursorUtil;
 
 
-    public BankAccount bankAccount(UUID id) {
+    public BankAccount bankAccount(UUID id, DataFetchingEnvironment environment) {
         log.info("Retrieving bank account id: {}", id);
+
+        CustomGraphQLContext context = environment.getContext();
+        log.info("User ID: {}", context.getUserId());
 
         return BankAccount.builder()
                 .id(id)
