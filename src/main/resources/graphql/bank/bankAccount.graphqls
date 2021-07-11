@@ -6,4 +6,5 @@ type BankAccount {
     currency: Currency!
     createdOn: Date
     createdAt: DateTime
+    balance: Float
 }

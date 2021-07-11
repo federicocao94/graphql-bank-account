@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 @Component
 public class BankAccountRepository {
 
+    //mockup
     private final List<BankAccount> bankAccounts = List.of(
             BankAccount.builder()
                     .id(UUID.fromString("a418a904-351c-4f32-b763-96e15515d7c4"))

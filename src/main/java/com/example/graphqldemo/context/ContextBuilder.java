@@ -1,8 +1,10 @@
 package com.example.graphqldemo.context;
 
+import com.example.graphqldemo.context.dataloader.DataLoaderRegistryFactory;
 import graphql.kickstart.execution.context.GraphQLContext;
 import graphql.kickstart.servlet.context.DefaultGraphQLServletContext;
 import graphql.kickstart.servlet.context.GraphQLServletContextBuilder;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +15,10 @@ import javax.websocket.server.HandshakeRequest;
 
 @Slf4j
 @Component
+@RequiredArgsConstructor
 public class ContextBuilder implements GraphQLServletContextBuilder {
+
+    private final DataLoaderRegistryFactory dataLoaderRegistry;
 
     //this context is created once and we can use it in any resolver/mutation
     //every resolver method can have a parameter environment from which we can get context
@@ -24,6 +29,7 @@ public class ContextBuilder implements GraphQLServletContextBuilder {
         DefaultGraphQLServletContext context = DefaultGraphQLServletContext.createServletContext()
                 .with(request)
                 .with(response)
+                .with(dataLoaderRegistry.create(userId))
                 .build();
 
         return new CustomGraphQLContext(userId, context);
